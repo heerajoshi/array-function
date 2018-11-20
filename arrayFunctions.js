@@ -18,15 +18,15 @@ const filter = function(func,inputArray){
   return result;
 }
 
-const reduce = function(func,inputArray,startFrom){
+const reduce = function(func,inputArray,initializr){
   let acc = '';
   for(let index = 0; index < inputArray.length; index++ ){
-    if(!startFrom){
-      startFrom = inputArray[0];
+    if(!initializr){
+      initializr = inputArray[0];
       index++;
     }
-    acc = func(startFrom,inputArray[index])
-    startFrom = acc;
+    acc = func(initializr,inputArray[index])
+    initializr = acc;
   }
   return acc;
 }
