@@ -18,6 +18,19 @@ const filter = function(func,inputArray){
   return result;
 }
 
+const reduce = function(func,inputArray,startFrom){
+  let acc = '';
+  for(let index = 0; index < inputArray.length; index++ ){
+    if(!startFrom){
+      startFrom = inputArray[0];
+      index++;
+    }
+    acc = func(startFrom,inputArray[index])
+    startFrom = acc;
+  }
+  return acc;
+}
 
-exports.filter = filter
-exports.map = map
+exports.reduce = reduce;
+exports.filter = filter;
+exports.map = map;

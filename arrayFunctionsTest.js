@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {map,filter} = require('./arrayFunctions.js');
+const {map,filter,reduce} = require('./arrayFunctions.js');
 
 const add5 = function(element) {
   return element + 5;
@@ -30,3 +30,14 @@ assert.deepEqual(filter(isEven, inputArr), [0, 6, 100] );
 
 inputArr = [2, 3, 4, 8];
 assert.deepEqual(filter(isEven, inputArr), [2, 4, 8] );
+
+const sum = function(a,b){
+  return a+b;
+}
+
+inputArr = [2, 3, 4, 8];
+assert.deepEqual(reduce(sum, inputArr), 17 );
+
+inputArr = [2, 3, 4, 8];
+assert.deepEqual(reduce(sum, inputArr, 10), 27 );
+
