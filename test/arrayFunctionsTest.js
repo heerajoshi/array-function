@@ -5,31 +5,40 @@ const add5 = function(element) {
   return element + 5;
 }
 
+const square = function(element){
+  return element * element;
+}
+
 describe('map()', function() {
-    it('should return a array increase by 5', function() {
-    inputArr = [2, 3, 4];
-    assert.deepEqual(map(add5, inputArr), [7, 8, 9] );
-    });
+  it('should return a empty array', function() {
+    inputArr = [];
+    assert.deepEqual(map(add5, inputArr), [] );
   });
 
-
+  it('should return a array of one element', function() {
+    inputArr = [9];
+    assert.deepEqual(map(add5, inputArr), [14] );
+  });
+  
+  it('should return a array increase by 5', function() {
+    inputArr = [2, 3, 4];
+    assert.deepEqual(map(add5, inputArr), [7, 8, 9] );
+  });
+  
+  it('should return a array square of every element',function() {
+    inputArr = [1, 0, 6, 9, 100];
+    assert.deepEqual(map(square, inputArr), [1, 0, 36, 81, 10000] );
+  });
+})
 
 
 
 
 
 /*
-//=====Map
+    //=====Map
 
-const square = function(element){
-  return element * element;
-}
 
-let inputArr = [];
-assert.deepEqual(map(add5, inputArr), [] );
-
-inputArr = [9];
-assert.deepEqual(map(add5, inputArr), [14] );
 
 
 inputArr = [1, 0, 6, 9, 100];
@@ -38,8 +47,6 @@ assert.deepEqual(map(add5, inputArr), [6, 5, 11, 14, 105] );
 inputArr = [2, 3, 4];
 assert.deepEqual(map(square, inputArr), [4, 9, 16] );
 
-inputArr = [1, 0, 6, 9, 100];
-assert.deepEqual(map(square, inputArr), [1, 0, 36, 81, 10000] );
 
 //=========Filter
 
