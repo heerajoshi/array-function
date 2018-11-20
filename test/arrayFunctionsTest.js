@@ -1,10 +1,25 @@
 const assert = require('assert');
-const {map,filter,reduce} = require('./arrayFunctions.js');
-
-//=====Map
+const {map,filter,reduce} = require('../src/arrayFunctions.js');
+ 
 const add5 = function(element) {
   return element + 5;
 }
+
+describe('map()', function() {
+    it('should return a array increase by 5', function() {
+    inputArr = [2, 3, 4];
+    assert.deepEqual(map(add5, inputArr), [7, 8, 9] );
+    });
+  });
+
+
+
+
+
+
+
+/*
+//=====Map
 
 const square = function(element){
   return element * element;
@@ -16,8 +31,6 @@ assert.deepEqual(map(add5, inputArr), [] );
 inputArr = [9];
 assert.deepEqual(map(add5, inputArr), [14] );
 
-inputArr = [2, 3, 4];
-assert.deepEqual(map(add5, inputArr), [7, 8, 9] );
 
 inputArr = [1, 0, 6, 9, 100];
 assert.deepEqual(map(add5, inputArr), [6, 5, 11, 14, 105] );
@@ -83,4 +96,4 @@ assert.deepEqual(reduce(mul, inputArr), 192 );
 
 inputArr = [2, 3, 4, 8];
 assert.deepEqual(reduce(mul, inputArr, 10), 1920 );
-
+*/
