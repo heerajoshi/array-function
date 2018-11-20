@@ -9,29 +9,57 @@ const square = function(element){
   return element * element;
 }
 
+const isEven = function(element){
+  return element % 2 === 0;
+}
+
+const isOdd = function(element){
+  return element % 2 !== 0;
+}
+
 describe('map()', function() {
-  it('should return a empty array', function() {
+  it('for empty array map should return an empty array', function() {
     inputArr = [];
     assert.deepEqual(map(add5, inputArr), [] );
   });
 
-  it('should return a array of one element', function() {
+  it('for a array of one element should return an array of one element', function() {
     inputArr = [9];
     assert.deepEqual(map(add5, inputArr), [14] );
   });
   
-  it('should return a array increase by 5', function() {
+  it('map should return an array increase by 5', function() {
     inputArr = [2, 3, 4];
     assert.deepEqual(map(add5, inputArr), [7, 8, 9] );
   });
   
-  it('should return a array square of every element',function() {
+  it('for a array map should return an array square of every element',function() {
     inputArr = [1, 0, 6, 9, 100];
     assert.deepEqual(map(square, inputArr), [1, 0, 36, 81, 10000] );
   });
 })
 
+describe('filter()', function() {
+  it('for empty array filter should return an empty array', function() {
+    inputArr = [];
+    assert.deepEqual(filter(isEven, inputArr), [] );
+  });
 
+  it('for no match should return an array of empty element', function() {
+    inputArr = [9];
+    assert.deepEqual(filter(isEven, inputArr), [] );
+  });
+  
+  it('should return an filterd even array', function() {
+    inputArr = [2, 3, 4];
+    assert.deepEqual(filter(isEven, inputArr), [2,4] );
+  });
+  
+  it('should return an array of odd element',function() {
+    inputArr = [1, 0, 6, 9, 100];
+    assert.deepEqual(filter(isOdd, inputArr), [1, 9] );
+  });
+})
 
 
 
@@ -49,14 +77,6 @@ assert.deepEqual(map(square, inputArr), [4, 9, 16] );
 
 
 //=========Filter
-
-const isEven = function(element){
-  return element % 2 === 0;
-}
-
-const isOdd = function(element){
-  return element % 2 !== 0;
-}
 
 inputArr = [];
 assert.deepEqual(filter(isOdd, inputArr), [] );
