@@ -19,16 +19,16 @@ const filter = function(predicate,inputArray){
 }
 
 const reduce = function(reducer,inputArray,initializr){
-  let acc = '';
-  for(let index = 0; index < inputArray.length; index++ ){
-    if(!initializr){
-      initializr = inputArray[0];
-      index++;
-    }
-    acc = reducer(initializr,inputArray[index])
-    initializr = acc;
+  let startIndex = 0;;
+  if(initializr === undefined){
+    initializr = inputArray[0];
+    startIndex++;
   }
-  return acc;
+  let result = initializr;
+  for(let index = startIndex; index < inputArray.length; index++ ){
+    result = reducer(result,inputArray[index])
+  }
+  return result;
 }
 
 exports.reduce = reduce;
