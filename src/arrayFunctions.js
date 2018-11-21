@@ -1,16 +1,16 @@
-const map = function(func,inputArray){
+const map = function(mapper,inputArray){
   let result = [];
   for(element of inputArray){
-    let outputElement = func(element); 
+    let outputElement = mapper(element); 
     result.push(outputElement)
  }
 return result;
 }
 
-const filter = function(func,inputArray){
+const filter = function(predicate,inputArray){
   let result = [];
   for(element of inputArray){
-    let output = func(element)
+    let output = predicate(element)
     if(output){
       result.push(element);
     }
@@ -18,14 +18,14 @@ const filter = function(func,inputArray){
   return result;
 }
 
-const reduce = function(func,inputArray,initializr){
+const reduce = function(reducer,inputArray,initializr){
   let acc = '';
   for(let index = 0; index < inputArray.length; index++ ){
     if(!initializr){
       initializr = inputArray[0];
       index++;
     }
-    acc = func(initializr,inputArray[index])
+    acc = reducer(initializr,inputArray[index])
     initializr = acc;
   }
   return acc;
