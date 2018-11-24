@@ -31,13 +31,34 @@ const reduce = function(reducer,inputArray,initializr){
   return result;
 }
 
-mapR = function(mapper,list){
+const mapR = function(mapper,list){
   if(list.length==0){
     return [];
   }
   return [mapper(list[0])].concat(mapR(mapper,list.slice(1)));
 }
 
+const filterR = function(predicate,list){
+  if(list.length ==0){
+    return []
+  }
+  result = predicate(list[0])
+  if(result){
+    return [list[0]].concat(filterR(predicate,list.slice(1)))
+  }
+  return filterR(predicate,list.slice(1));
+}
+
+reduceR = function(reducer,list,initializer){
+  if(initializer == undefined){
+    initializer = list.shift();
+  }
+  if(list.length ==0){
+    return initializer;
+  }
+  let acc = reducer(initializer,list[0]);
+  return reduceR(reducer,list.slice(1),acc);
+}
 
 
-module.exports = { reduce, filter, map, mapR };
+module.exports = { reduce, filter, map, mapR, filterR, reduceR };

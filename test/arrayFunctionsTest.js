@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {map,filter,reduce,mapR} = require('../src/arrayFunctions.js');
+const {map,filter,reduce,mapR,filterR,reduceR} = require('../src/arrayFunctions.js');
 
 const add5 = function(element) {
   return element + 5;
@@ -107,5 +107,44 @@ describe('mapR()', function() {
     assert.deepEqual(mapR(square, inputArr), [1, 0, 36, 81, 10000] );
   });
 })
+
+describe('filterR()', function() {
+  it('for empty array filterR should return an empty array', function() {
+    inputArr = [];
+    assert.deepEqual(filterR(isEven, inputArr), [] );
+  });
+
+  it('for no match should return an array of empty element', function() {
+    inputArr = [9];
+    assert.deepEqual(filterR(isEven, inputArr), [] );
+  });
+
+  it('should return an filterRd even array', function() {
+    inputArr = [2, 3, 4];
+    assert.deepEqual(filterR(isEven, inputArr), [2,4] );
+  });
+
+  it('should return an array of odd element',function() {
+    inputArr = [1, 0, 6, 9, 100];
+    assert.deepEqual(filterR(isOdd, inputArr), [1, 9] );
+  });
+})
+
+describe('reduceR()', function() {
+  it ('for one element it should return the element multiply by initializr', function(){
+    inputArr = [9];
+    assert.deepEqual(reduceR(mul, inputArr, 8), 72 );
+  });
+
+  it ('for no initializr should take first element as initializr and return add of all element',function(){
+    inputArr = [2, 3, 4, 8];
+    assert.deepEqual(reduceR(sum, inputArr), 17 );
+  });
+
+  it ('for initializr is take initializr as first element and shoud return add of all element',function(){
+    inputArr = [2, 3, 4, 8];
+    assert.deepEqual(reduceR(sum, inputArr, 10), 27 );
+  });
+});
 
 
