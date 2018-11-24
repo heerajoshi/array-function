@@ -31,6 +31,13 @@ const reduce = function(reducer,inputArray,initializr){
   return result;
 }
 
-exports.reduce = reduce;
-exports.filter = filter;
-exports.map = map;
+mapR = function(mapper,list){
+  if(list.length==0){
+    return [];
+  }
+  return [mapper(list[0])].concat(mapR(mapper,list.slice(1)));
+}
+
+
+
+module.exports = { reduce, filter, map, mapR };

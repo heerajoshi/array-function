@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {map,filter,reduce} = require('../src/arrayFunctions.js');
+const {map,filter,reduce,mapR} = require('../src/arrayFunctions.js');
 
 const add5 = function(element) {
   return element + 5;
@@ -85,3 +85,27 @@ describe('reduce()', function() {
     assert.deepEqual(reduce(sum, inputArr, 10), 27 );
   });
 });
+
+describe('mapR()', function() {
+  it('for empty array mapR should return an empty array', function() {
+    inputArr = [];
+    assert.deepEqual(mapR(add5, inputArr), [] );
+  });
+
+  it('for a array of one element should return an array of one element', function() {
+    inputArr = [9];
+    assert.deepEqual(mapR(add5, inputArr), [14] );
+  });
+
+  it('mapR should return an array increase by 5', function() {
+    inputArr = [2, 3, 4];
+    assert.deepEqual(mapR(add5, inputArr), [7, 8, 9] );
+  });
+
+  it('for a array mapR should return an array square of every element',function() {
+    inputArr = [1, 0, 6, 9, 100];
+    assert.deepEqual(mapR(square, inputArr), [1, 0, 36, 81, 10000] );
+  });
+})
+
+
